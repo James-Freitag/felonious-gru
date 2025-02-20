@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Grus' Place",
   description: "Discover the life of Gru and his life",
+  icons: "/favicon.ico",
 };
 
 export default function RootLayout({

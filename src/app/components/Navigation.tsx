@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,9 +7,14 @@ const Navigation = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="flex justify-between items-center px-6 py-8 bg-blue-600">
-      <div>
-        <p>Logo</p>
+    <nav className="flex justify-between items-center px-6 py-4 bg-blue-600">
+      <div className="p-2 bg-black rounded-full">
+        <Image
+          src="/gru-images/despicable_me_gru.png"
+          width={35}
+          height={35}
+          alt="Gru G Symbol"
+        />
       </div>
       <div>
         <ul className="flex space-x-4 items-center text-lg">
