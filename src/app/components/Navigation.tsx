@@ -7,10 +7,10 @@ const Navigation = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-blue-600">
+    <nav className="flex z-50 justify-between items-center px-6 py-4 bg-blue-600 font-fredoka">
       <div className="p-2 bg-black rounded-full">
         <Image
-          src="/gru-images/despicable_me_gru.png"
+          src="/gru-images/gru-logo.jpg"
           width={35}
           height={35}
           alt="Gru G Symbol"

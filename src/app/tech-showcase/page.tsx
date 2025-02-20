@@ -1,7 +1,7 @@
 import React from "react";
 
 const TechShowcase = () => {
-  return <div></div>;
+  return <div className="min-h-screen"></div>;
 };
 
 export default TechShowcase;

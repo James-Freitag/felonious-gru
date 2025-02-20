@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Luckiest_Guy, Fredoka } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+export const luckiestGuy = Luckiest_Guy({
+  weight: "400",
   subsets: ["latin"],
+  variable: "--font-luckiest-guy",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+export const fredoka = Fredoka({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-fredoka", // Useful for global CSS
 });
 
 export const metadata: Metadata = {
@@ -27,10 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${luckiestGuy.variable} ${fredoka.variable} antialiased`}
       >
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
