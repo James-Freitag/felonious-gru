@@ -4,13 +4,13 @@ import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
-export const luckiestGuy = Luckiest_Guy({
+const luckiestGuy = Luckiest_Guy({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-luckiest-guy",
 });
 
-export const fredoka = Fredoka({
+const fredoka = Fredoka({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-fredoka", // Useful for global CSS
