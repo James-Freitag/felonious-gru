@@ -1,6 +1,35 @@
-import React from "react";
+"use client";
+import { evilPlans } from "../lib/types/data";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+type PlanFormType = {
+  name: string;
+  item: string;
+};
 
 const About = () => {
+  const [plan, setPlan] = useState("");
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PlanFormType>();
+
+  function getRandomPlan(name: string, item: string): string {
+    const randomIndex = Math.floor(Math.random() * evilPlans.length);
+    const temp = evilPlans[randomIndex].plan;
+
+    return temp.replace(/\${name}/g, name).replace(/\${item}/g, item);
+  }
+
+  const onSubmit = (data: PlanFormType) => {
+    const planFinished = getRandomPlan(data.name, data.item);
+    setPlan(planFinished);
+    reset();
+  };
+
   return (
     <section className="min-h-screen px-4 pb-6 pt-24">
       <div className="p-4 pt-6">
@@ -28,6 +57,62 @@ const About = () => {
             I&apos;m Gru. What do you expect?
           </p>
         </div>
+      </div>
+      <div className="flex w-full flex-col items-center justify-center pt-12">
+        <h2 className="pt-12 font-luckiest text-2xl tracking-wide">
+          Generate A Diabolical Plan!!
+        </h2>
+        <p className="font-fredoka text-lg">By yours truly...</p>
+        <p className="pb-12 font-fredoka text-lg">Me...Gru..obviously.</p>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex h-fit w-full flex-col bg-gray-800 p-6 font-fredoka uppercase text-minion-yellow md:max-w-[35%]"
+        >
+          <label className="text-lg">Name</label>
+          <input
+            type="text"
+            {...register("name", { required: "Name is required" })}
+            className="p-1 text-black"
+            placeholder="Enter name"
+          />
+          {errors.name && (
+            <p className="text-crimson-red">{errors.name.message}</p>
+          )}
+          <label className="pt-4 text-lg">Item to steal</label>
+          <input
+            type="text"
+            {...register("item", {
+              required: "An item is required",
+              pattern: {
+                value: /^[^\s]+$/,
+                message: "Enter one word",
+              },
+            })}
+            className="p-1 text-black"
+            placeholder="Enter an item"
+          />
+
+          {errors.item && (
+            <p className="text-crimson-red">{errors.item.message}</p>
+          )}
+          <button
+            type="submit"
+            className="mt-4 bg-minion-yellow py-4 text-black hover:bg-minion-yellow/90"
+          >
+            Get Gru&apos;s Plan
+          </button>
+        </form>
+        <aside className="mx-auto flex items-center justify-center px-4 py-6">
+          {plan && (
+            <div className="relative flex min-h-fit w-full items-center justify-center border-2 border-dashed border-blue-200 bg-blue-900 p-6 font-mono text-blue-300 shadow-lg md:max-w-[60%] lg:min-h-[500px]">
+              <div className="pointer-events-none absolute inset-0 bg-[url('/gru-images/blueprint-bg.jpg')] bg-cover opacity-20"></div>
+
+              <p className="drop-shadow-glow relative indent-4 leading-10 md:text-lg lg:text-xl">
+                {plan}
+              </p>
+            </div>
+          )}
+        </aside>
       </div>
     </section>
   );

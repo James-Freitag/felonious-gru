@@ -3,6 +3,12 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between gap-6 py-24 pb-6 md:gap-20">
+      <div className="flex flex-col px-4 pt-8 text-center font-luckiest text-6xl tracking-wide">
+        <h1>Ah, Welcome!</h1>
+        <p className="text-xl">
+          come in come in...just don&apos;t touch anything!
+        </p>
+      </div>
       <div className="md:max-w-3/4 flex max-w-full items-center justify-center bg-gradient-to-b from-gray-900 via-gray-700 to-gray-900 p-8 lg:min-h-[40rem]">
         <div className="flex h-auto items-center justify-center space-x-4 px-4">
           <Image
@@ -47,7 +53,7 @@ export default function Home() {
           alt="gru on tower with moon in background"
           width={500}
           height={500}
-          className=""
+          className="px-4"
         />
       </div>
     </main>
